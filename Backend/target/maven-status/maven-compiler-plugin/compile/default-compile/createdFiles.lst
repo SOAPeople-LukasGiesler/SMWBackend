@@ -1,0 +1,11 @@
+smw\backend\BuildJSON.class
+smw\builds\Legohaus.class
+smw\backend\Subscriber$1.class
+smw\backend\Instruction.class
+smw\backend\Subscriber.class
+smw\backend\Main.class
+smw\backend\Publisher.class
+smw\backend\NewCrossOriginResourceSharingFilter.class
+smw\backend\ApplicationConfig.class
+smw\backend\PublishException.class
+smw\backend\Test.class
