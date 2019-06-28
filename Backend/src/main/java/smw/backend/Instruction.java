@@ -35,8 +35,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- * REST Web Service
- *
+ * REST Web Service to communicate with the frontend
  * @author giesler
  */
 @Path("instructions")
@@ -56,9 +55,7 @@ public class Instruction {
      */
     @PUT
     public void putHtml(String Step) throws MqttException{
-
-        PublishCaller publisher = new PublishCaller();
-        PublishCaller.publish("HaloEinsZweiDrei");
+        Publisher.publish("Aloha", "/smw/backend/40:A3:CC:98:91:17/pir/" );
     }
     
 
@@ -68,12 +65,6 @@ public class Instruction {
    public String getJSON(){
        BuildJSON json_file = new BuildJSON();
        String json_string = json_file.initJSON();
-       
-       try{
-        Publisher publisher = new Publisher();
-       }catch(MqttException e){
-           System.out.println(e);
-       }
        
        return json_string;
    }
