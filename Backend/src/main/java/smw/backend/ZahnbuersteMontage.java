@@ -5,19 +5,19 @@
  */
 package smw.backend;
 
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
-
 /**
- *
  * @author giesler
  */
-public class PublishCaller {
-        
-    public static void nextStep(){
+public class ZahnbuersteMontage {
+    
+    public static int stepcounter = 1;
+    
+    public ZahnbuersteMontage(){
         
     }
-
+    
+    public static void nextStep(){
+        System.out.println("Schritt " + stepcounter + " für Zahnbuerste");
+        stepcounter ++;
+    }
 }

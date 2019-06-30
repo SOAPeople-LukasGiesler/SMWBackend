@@ -7,5 +7,4 @@ smw\backend\Main.class
 smw\backend\Publisher.class
 smw\backend\NewCrossOriginResourceSharingFilter.class
 smw\backend\ApplicationConfig.class
-smw\backend\PublishException.class
 smw\backend\Test.class

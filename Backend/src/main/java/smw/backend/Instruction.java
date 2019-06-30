@@ -29,6 +29,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -41,6 +43,7 @@ import org.json.simple.parser.ParseException;
 @Path("instructions")
 public class Instruction {
     
+    
     @Context
     private UriInfo context;
 
@@ -50,12 +53,53 @@ public class Instruction {
 
     /**
      * PUT Method to handle incoming Messages from the Frontend
-     * @param Step
+     * @param step
      * @throws org.eclipse.paho.client.mqttv3.MqttException
      */
     @PUT
-    public void putHtml(String Step) throws MqttException{
-        Publisher.publish("Aloha", "/smw/backend/40:A3:CC:98:91:17/pir/" );
+    public void putHtml(@QueryParam("step") String step) throws MqttException{
+        
+        //Initial message um Error in der Referenz zu vermeiden
+        String message = "Aloha";
+        message = step;
+        
+        //Ausgabe um publishen zu testen, ---remove---
+        Publisher.publish(message, "/smw/backend/40:A3:CC:98:91:17/pir/" );
+        
+        
+        //Initialisieren der Montage der Zahnbuerste
+        //Das Werkstück Zahnbuerste wird aktiv gesetzt
+        if("Zahnbuerste".equals(message)){
+                ZahnbuersteMontage zbm = new ZahnbuersteMontage();
+                ActiveWorkpiece.zbactive = true;
+                ActiveWorkpiece.szactive = false;
+        }       
+        
+        //Initialisieren der Montage der Schraubzwinge
+        //Das Werkstück Schraubzwinge wird aktiv gesetzt
+        if("Schraubzwinge".equals(message)){
+                SchraubzwingeMontage szm = new SchraubzwingeMontage();
+                ActiveWorkpiece.zbactive = false;
+                ActiveWorkpiece.szactive = true;
+
+        }
+        
+        //Falls vom Frontend nextStep gesendet wird 
+        //muss unterschieden werden für welches Werkstück der nächste Schritt ausgeführt wird
+        //dazu wird geprüft welche Montage derzeit aktiv ist
+        if("nextStep".equals(message)){
+            if(ActiveWorkpiece.zbactive){
+                ZahnbuersteMontage.nextStep();
+            }
+            if(ActiveWorkpiece.szactive){
+                SchraubzwingeMontage.nextStep();
+            }
+        }
+        
+        //Hilfsausgaben ---remove---
+        System.out.println(ActiveWorkpiece.zbactive);
+        System.out.println(ActiveWorkpiece.szactive);
+
     }
     
 
