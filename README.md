@@ -26,3 +26,30 @@ Der PUT Anfrage kann ein Parameter 'step' hinzugefügt werden um die Aktionen we
 
 Das Backend regelt entsprechend die Montage der Bauteile und steuert die Kommunikation mit den PIs.
 
+### Topics ###
+**Wichtig: Die Topics haben kein _/_ am Anfang, da das nur eine zusätzliches Lvel hinzufügt (https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/)**
+##### Datenfluss Pi -> Backend #####
+```
+smw/_MAC-Adresse-Gateway_/_MAC-Adresse-Pi_/led/
+smw/00:0a:95:9d:68:16/00:14:f2:01:23:45/led/
+```
+
+##### Datenfluss Pi -> Backend #####
+```
+smw/_MAC-Adresse-Gateway_/_MAC-Adresse-Pi_/pir/
+smw/00:0a:95:9d:68:16/00:14:f2:01:23:45/pir/
+```
+
+### Payload ###
+Als Nachrichten werden stets JSONs verschickt, da diese eine Struktur mit sich bringen und die Schnittstelle so besser erweiterbar bleibt.
+
+```javascript
+{
+  status: "blink",
+  color: "yellow"
+}
+{
+  motionDetected: true
+}
+```
+
