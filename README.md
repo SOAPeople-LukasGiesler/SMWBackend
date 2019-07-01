@@ -27,7 +27,7 @@ Der PUT Anfrage kann ein Parameter 'step' hinzugefügt werden um die Aktionen we
 Das Backend regelt entsprechend die Montage der Bauteile und steuert die Kommunikation mit den PIs.
 
 ### Topics ###
-**Wichtig: Die Topics haben kein _/_ am Anfang, da das nur eine zusätzliches Lvel hinzufügt (https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/)**
+**Wichtig: Die Topics haben kein _/_ am Anfang, da das nur ein unnötiges Level hinzufügt (https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/)**
 ##### Datenfluss Pi -> Backend #####
 ```
 smw/workbench_id/pi_id/led/
