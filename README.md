@@ -30,14 +30,14 @@ Das Backend regelt entsprechend die Montage der Bauteile und steuert die Kommuni
 **Wichtig: Die Topics haben kein _/_ am Anfang, da das nur eine zusätzliches Lvel hinzufügt (https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/)**
 ##### Datenfluss Pi -> Backend #####
 ```
-smw/MAC-Adresse-Gateway/MAC-Adresse-Pi/led/
-smw/00:0a:95:9d:68:16/00:14:f2:01:23:45/led/
+smw/workbench_id/pi_id/led/
+smw/workbench_1/pi_1/led/
 ```
 
 ##### Datenfluss Pi -> Backend #####
 ```
-smw/MAC-Adresse-Gateway/MAC-Adresse-Pi/pir/
-smw/00:0a:95:9d:68:16/00:14:f2:01:23:45/pir/
+smw/workbench_id/pi_id/pir/
+smw/workbench_1/pi_1/pir/
 ```
 
 ### Payload ###
